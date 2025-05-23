@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import styles from './Login.module.css';
+import styles from './Auth.module.css';
+import FormField from '../../components/FormField.jsx';
 
 const Login = () => {
 
   const {login} = useAuth();
   const [form, setForm] = useState({
-    username: '',
-    password: '',
-    rememberMe: false,
+    "username": '',
+    "password": '',
+    "rememberMe": false,
   });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (name, value) => {
     setForm((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }));
   };
 
@@ -28,7 +28,7 @@ const Login = () => {
 
     try {
       const credentials = {"username": form.username, "password": form.password, "rememberMe": form.rememberMe};
-      await login(credentials);
+      await login(form);
       navigate('/');
     } catch (err) {
       if (err.response?.data?.message) {
@@ -43,39 +43,26 @@ const Login = () => {
     <div className={styles.container}>
       <h2 className={styles.heading}>Giriş Yap</h2>
       <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="username" className={styles.label}>Kullanıcı Adı</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className={styles.input}
-            value={form.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="password" className={styles.label}>Parola</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className={styles.input}
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
+        <FormField
+          label="Kullanıcı Adı"
+          value={form.username}
+          onChange={val => handleChange('username', val)}
+          error={error.username}
+        />
+        <FormField
+          label="Parola"
+          type='password'
+          value={form.password}
+          onChange={val => handleChange('password', val)}
+          error={error.password}
+        />
         <div className={styles.checkboxGroup}>
           <input
             type="checkbox"
             id="rememberMe"
             name="rememberMe"
             checked={form.rememberMe}
-            onChange={handleChange}
+            onChange={val => handleChange('rememberMe', val.target.checked)}
           />
           <label htmlFor="rememberMe">Beni hatırla</label>
         </div>
