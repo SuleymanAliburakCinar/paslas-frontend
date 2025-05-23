@@ -30,6 +30,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (credentials) => {
+    try {
+      const response = await api.register(credentials);
+      setUser(response.data);
+    } catch (err) {
+      console.error('Register error:', err);
+      throw err;
+    }
+  };
+
   const fetchUser = async () => {
     try {
       const response = await api.authMe();
@@ -43,7 +53,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout, loading, register }}>
       {children}
     </AuthContext.Provider>
   );
