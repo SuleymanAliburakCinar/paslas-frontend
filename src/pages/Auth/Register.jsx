@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { validateRegistration } from '../../utils/validation/UserValidation.ts';
 import styles from './Auth.module.css';
