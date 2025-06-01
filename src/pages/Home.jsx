@@ -18,7 +18,6 @@ export default function Home() {
       try {
         const response = await api.getAllLobby(user.id);
         setLobbies(response.data);
-        console.log("Lobiler:", response.data);
       } catch (error) {
         console.error("Lobiler alınırken hata oluştu:", error);
       }

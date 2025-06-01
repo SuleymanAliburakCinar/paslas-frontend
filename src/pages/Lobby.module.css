@@ -1,0 +1,32 @@
+.lobbyContainer {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.userList {
+  flex: 1;
+  max-width: 355px;
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.selectedEventInfo {
+  flex: 1.5;
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.eventList {
+  flex: 1;
+  max-width: 355px;
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-y: auto;
+}
