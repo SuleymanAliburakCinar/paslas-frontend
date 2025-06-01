@@ -27,7 +27,6 @@ const Login = () => {
     setError('');
 
     try {
-      const credentials = {"username": form.username, "password": form.password, "rememberMe": form.rememberMe};
       await login(form);
       navigate('/');
     } catch (err) {

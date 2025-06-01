@@ -1,0 +1,78 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: clamp(0rem, 10rem, 20rem);
+  padding-right: clamp(0rem, 10rem, 20rem);
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  box-sizing: border-box;
+}
+
+.leftPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 350px;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.rightPanel {
+  flex-shrink: 0;
+  min-width: 350px;
+}
+
+.joinLobby {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.joinInput {
+  flex-grow: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline-offset: 2px;
+  transition: border-color 0.2s ease;
+
+  /* Odaklandığında */
+  &:focus {
+    border-color: #2563eb;
+  }
+}
+
+.joinButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.joinButton:hover {
+  background-color: #1e40af;
+}
+
+.createLobbyButton {
+  background-color: #10b981; /* Yeşil */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.createLobbyButton:hover {
+  background-color: #047857;
+}

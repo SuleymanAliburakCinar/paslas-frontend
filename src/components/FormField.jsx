@@ -1,6 +1,5 @@
 import React from "react";
-import "./FormField.css"; // CSS dosyasını içe aktarmayı unutma
-
+import "./FormField.css";
 const FormField = ({ label, type = "text", value, onChange, error }) => {
   return (
     <div className="form-group">
