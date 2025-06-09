@@ -9,28 +9,44 @@ export default function Home() {
 
   const { user } = useAuth();
   const [joinCode, setJoinCode] = useState("");
+  const [lobbyName, setLobbyName] = useState("");
   const [lobbies, setLobbies] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchLobbies = async () => {
-      try {
-        const response = await api.getAllLobby(user.id);
-        setLobbies(response.data);
-      } catch (error) {
-        console.error("Lobiler alınırken hata oluştu:", error);
-      }
-    }
     fetchLobbies();
   }, [user]);
 
-  const handleJoin = () => {
-    alert(`${joinCode} kodu ile lobiye katılma işlemi gerçekleştirilecek.`);
+  const fetchLobbies = async () => {
+    try {
+      const response = await api.getAllLobby(user.id);
+      setLobbies(response.data);
+    } catch (error) {
+      console.error("Lobiler alınırken hata oluştu:", error);
+    }
+  }
+
+  const handleJoin = async () => {
+    try {
+      const response = await api.joinLobby(joinCode);
+      if (response.status === 200) {
+        fetchLobbies()
+      }
+    } catch (error) {
+      alert("Lobiye katılma işlemi başarısız oldu. Lütfen join kodunu kontrol edin.");
+    }
   };
 
-  const handleCreateLobby = () => {
-    alert("Yeni lobi oluşturma işlemi tetiklendi.");
+  const handleCreateLobby = async () => {
+    try {
+      const response = await api.createLobby(lobbyName);
+      if (response.status === 200) {
+        navigate(`/lobby/${response.data.id}`);
+      }
+    } catch (error) {
+      alert("Yeni lobi oluştururken bir hata oluştu.");
+    }
   };
 
 
@@ -38,22 +54,32 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className={styles.leftPanel}>
-        <div className={styles.joinLobby}>
-          <input
-            type="text"
-            placeholder="Join kodunu gir"
-            value={joinCode}
-            onChange={(e) => setJoinCode(e.target.value)}
-            className={styles.joinInput}
-          />
-          <button onClick={handleJoin} className={styles.joinButton}>
-            Katıl
-          </button>
+        <div className={styles.lobbyUtilContainer}>
+          <div className={styles.joinLobby}>
+            <input
+              type="text"
+              placeholder="Join kodunu gir"
+              value={joinCode}
+              onChange={(e) => setJoinCode(e.target.value)}
+              className={styles.joinInput}
+            />
+            <button onClick={handleJoin} className={styles.joinButton}>
+              Katıl
+            </button>
+          </div>
+          <div className={styles.joinLobby}>
+            <input
+              type="text"
+              placeholder="Lobi adı gir"
+              value={lobbyName}
+              onChange={(e) => setLobbyName(e.target.value)}
+              className={styles.joinInput}
+            />
+            <button onClick={handleCreateLobby} className={styles.createLobbyButton}>
+              Yeni Lobi Oluştur
+            </button>
+          </div>
         </div>
-
-        <button onClick={handleCreateLobby} className={styles.createLobbyButton}>
-          Yeni Lobi Oluştur
-        </button>
       </div>
 
       <div className={styles.rightPanel}>

@@ -1,78 +1,81 @@
 .page {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: clamp(0rem, 10rem, 20rem);
-  padding-right: clamp(0rem, 10rem, 20rem);
-  min-height: 100vh;
-  background-color: #f3f4f6;
-  box-sizing: border-box;
+  height: 100vh; /* Gerekirse tüm ekran yüksekliği */
+  position: relative;
 }
 
 .leftPanel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 350px;
-  min-height: 100vh;
-  justify-content: center;
+  flex: 2; /* 2/3 oran */
+  padding: 1rem; /* İsteğe bağlı boşluk */
+  box-sizing: border-box;
+  background-color: #f9fafb; /* Gerekirse bir arka plan rengi */
 }
 
 .rightPanel {
-  flex-shrink: 0;
-  min-width: 350px;
+  flex: 1; /* 1/3 oran */
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #ffffff; /* Gerekirse farklı arka plan */
+  border-left: 1px solid #e5e7eb; /* İsteğe bağlı ayırıcı çizgi */
 }
 
+.lobbyUtilContainer {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Join kutusu ve buton aynı sırada */
 .joinLobby {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
+/* Input alanı */
 .joinInput {
-  flex-grow: 1;
-  padding: 0.5rem 0.75rem;
+  flex: 1;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1.5px solid #d1d5db;
+  border: 1px solid #d1d5db;
   border-radius: 0.5rem;
-  outline-offset: 2px;
+  outline: none;
   transition: border-color 0.2s ease;
-
-  /* Odaklandığında */
-  &:focus {
-    border-color: #2563eb;
-  }
 }
 
-.joinButton {
-  background-color: #2563eb;
+.joinInput:focus {
+  border-color: #3b82f6; /* blue-500 */
+}
+
+/* Ortak buton stilleri */
+.joinButton,
+.createLobbyButton {
+  background-color: #3b82f6;
   color: white;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
   border: none;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.joinButton:hover {
-  background-color: #1e40af;
+.joinButton:hover,
+.createLobbyButton:hover {
+  background-color: #2563eb; /* blue-600 */
+  transform: translateY(-1px);
 }
 
 .createLobbyButton {
-  background-color: #10b981; /* Yeşil */
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.createLobbyButton:hover {
-  background-color: #047857;
+  width: 100%;
 }

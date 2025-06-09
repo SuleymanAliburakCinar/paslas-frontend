@@ -1,0 +1,38 @@
+.dropdownWrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 2px;
+}
+
+.trigger {
+  cursor: pointer;
+  padding: 0 6px;
+  font-weight: bold;
+  user-select: none;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.dropdownList {
+  position: absolute;
+  top: 0;
+  right: -100%; /* Sağında açılır */
+  margin-left: 6px; /* Kenar boşluğu */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.dropdownItem {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
