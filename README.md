@@ -4,6 +4,22 @@ Bu proje halısaha orgonizasyonlarını yönetmeyi kolaylaştırmak için geliş
 
 ### Proje Tanıtımı
 
-Kullanıcılar giriş yaptıktan sonra ana sayfada lobi oluşturabilir, mevcut lobilere katılım koduyla katılabilir ve üyesi oldukları lobileri görüntüleyebilir.
+* Kullanıcılar giriş yaptıktan sonra ana sayfada lobi oluşturabilir, mevcut lobilere katılım koduyla katılabilir ve üyesi oldukları lobileri görüntüleyebilir.
 
 ![paslas](https://github.com/user-attachments/assets/5d31a9de-c8b3-406f-ac8a-12596c0f54d5)
+
+* Lobinin içerisine giren kullanıcıları üye listesi ve event listesi karşılar.
+
+![paslas2](https://github.com/user-attachments/assets/aa828f5e-848f-4c4b-a057-6c03f9d73388)
+
+* Mevcut eventlere tıklayarak bilgileri görüntüler ve katılımcı listesini de görmüş olur.
+
+![paslas3](https://github.com/user-attachments/assets/014e89f4-0347-4f0a-ac96-5f1618e58657)
+
+* Katılımcılardan biri fikrini değiştirdiğinde bekleme listesindeki kullanıcı katılımcı listesine alınır.
+
+![paslas4](https://github.com/user-attachments/assets/57420839-9b21-4501-a5bb-d180961e26f6)
+
+---
+
+Backend tarafını görüntülemek için [buraya](https://github.com/SuleymanAliburakCinar/paslas-backend) tıklayınız
